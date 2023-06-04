@@ -1,12 +1,9 @@
-import React from 'react';
-
 import { Navigate, Route, Routes } from 'react-router-dom';
+
 import Home from 'pages/Home/Home';
-import Tweets from 'pages/Tweets';
+import Tweets from 'pages/tweets/Tweets';
+
 function App() {
-
-
-
     return (
         <Routes>
             <Route path="/" element={<Home />} />

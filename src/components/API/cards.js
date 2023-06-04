@@ -10,4 +10,4 @@ export const fetchUsers = async ({ setUsers }) => {
         .catch(error => {
             console.error('Something went wrong:', error);
         });
-}
+};

@@ -1,14 +1,17 @@
 import { Select } from 'antd';
 
+import './style.scss'
+
 const Filter = ({ setFilter, setPage, setFilteredUsers }) => {
 
     const onChange = (value) => {
-        setFilter(value)
-        setPage(1)
-        setFilteredUsers([])
+        setFilter(value);
+        setPage(1);
+        setFilteredUsers([]);
     };
 
     return (<Select
+        className='filter'
         showSearch
         defaultValue={'show all'}
         placeholder="Filter"
@@ -36,4 +39,4 @@ const Filter = ({ setFilter, setPage, setFilteredUsers }) => {
 
 
 
-export default Filter
+export default Filter;

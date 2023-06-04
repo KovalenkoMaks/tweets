@@ -1,17 +1,22 @@
  .list{
-    margin: 0 auto 20px;
-    max-width: 1160px;
+    
+    // max-width: 1160px;
+    margin-bottom: 20px;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     justify-content: center;
     align-items: center;
  }
+ .card--wrapper{
+    max-width: 1160px;
+    margin: 0 auto
+ }
  .card{
     position: relative;
     margin:  auto;
     width: 380px;
-    height: 460px;
+    max-height: 460px;
     padding-top: 20px;
     padding-bottom: 36px;
     background: linear-gradient(114.99deg, #471CA9 -0.99%, #5736A3 54.28%, #4B2A99 78.99%) ;
@@ -22,7 +27,7 @@
     }
     &__img-wrapper{
             position: absolute;
-            bottom: 202px;
+            bottom: 168px;
             left: 50%;
 
             display: flex;

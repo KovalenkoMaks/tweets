@@ -9,41 +9,31 @@ import { pagination } from '../../utils/pagination';
 import './style.scss'
 import Filter from 'components/common/filter/Filter';
 import { formatNumber } from 'utils/formatNumbers';
+import isFollowed from 'utils/isFollowed';
 
 const Card = ({ users, follow, setFollow }) => {
-    const [filter, setFilter] = useState('show all')
-    const [filteredUsers, setFilteredUsers] = useState([])
-
-    const [visibleUsers, setVisibleUsers] = useState([])
-    const [page, setPage] = useState(1)
+    const [filter, setFilter] = useState('show all');
+    const [filteredUsers, setFilteredUsers] = useState([]);
+    const [visibleUsers, setVisibleUsers] = useState([]);
+    const [page, setPage] = useState(1);
 
     useEffect(() => {
-        pagination(page, users, setVisibleUsers, filter, follow, setFilteredUsers)
-    }, [users, page, filter, follow])
+        pagination(page, users, setVisibleUsers, filter, follow, setFilteredUsers);
+    }, [users, page, filter, follow]);
 
 
     const onBtnClick = (id) => {
-        if (!follow.includes(id)) {
-            const updatedFollow = [...follow, id];
-            localStorage.setItem('follow', JSON.stringify(updatedFollow))
-            setFollow(updatedFollow)
-        } else {
-            const updatedFollow = [...follow];
-            const index = follow.indexOf(id);
-            updatedFollow.splice(index, 1);
-            setFollow(updatedFollow)
-            localStorage.setItem('follow', JSON.stringify(updatedFollow))
-        }
+        isFollowed(follow, setFollow, id)
     }
     const loadMore = async (e) => {
-        await setPage(prev => prev + 1)
+        await setPage(prev => prev + 1);
         if (filteredUsers.length <= (page + 1) * 3) {
-            e.target.classList.add('isHidden')
+            e.target.classList.add('isHidden');
         }
     }
 
     return (
-        <>
+        <div className='card--wrapper'>
             <Filter setFilter={setFilter} setPage={setPage} setFilteredUsers={setFilteredUsers} />
             <ul className='list'>
                 {visibleUsers?.map(e => {
@@ -68,7 +58,7 @@ const Card = ({ users, follow, setFollow }) => {
 
             </ul>
             {filteredUsers.length > 3 ? <button className='btn' type='button' onClick={loadMore}>Load More</button> : null}
-        </>
+        </div>
     );
 };
 export default Card;

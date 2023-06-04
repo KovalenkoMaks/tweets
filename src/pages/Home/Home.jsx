@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
-import './style.scss'
+import './style.scss';
 
 const Home = () => {
     return (
@@ -10,4 +10,4 @@ const Home = () => {
 
         </section>)
 }
-export default Home
+export default Home;
